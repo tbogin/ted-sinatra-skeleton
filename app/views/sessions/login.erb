@@ -1,0 +1,14 @@
+<form id="login-users" action="/login" method="post">
+  <input name="user[email]" type="text" placeholder="Email" required>
+  <input name="user[password]" type="password" placeholder="Password" required>
+  <input type="submit" value="Log In">
+</form>
+
+
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li> <%= error.full_message %> </li>
+      <% end %>
+  </ul>
+  <% end %>
