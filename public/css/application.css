@@ -65,3 +65,11 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+
+#layout-nav li {
+    display: inline-block;
+}
+
+#layout-nav li::after {
+    content: " /";
+}

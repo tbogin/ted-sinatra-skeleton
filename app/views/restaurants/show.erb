@@ -4,8 +4,12 @@
   <li><%= @restaurant.name %></li>
   <li>Cuisine: <%= @restaurant.cuisine %></li>
   <li>Location: <%= @restaurant.city %></li>
-  <li>Added by <%= @restaurant.user %></li>
+  <li>Added by <%= @restaurant.user.email %></li>
   <li><%= @restaurant.reviews %> reviews?</li>
 </ul>
 
+<%= @restaurant.reviews.body %>
+
+<% if logged_in? %>
 <input type="submit" value="Edit <%= @restaurant.name %>">
+<% end %>
