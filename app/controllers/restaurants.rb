@@ -14,6 +14,7 @@ end
 
 post '/restaurants' do
   @restaurant = Restaurant.new(params[:restaurant])
+  current_user.restaurants << @restaurant
   if @restaurant.save
     redirect '/'
   else
