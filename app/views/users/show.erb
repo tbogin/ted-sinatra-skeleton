@@ -1,2 +1,13 @@
-<p>Hello, User Show!</p>
-<p><%= @user.email %></p>
+<p>Hello, <%= @user.email %>!</p>
+
+<ul>
+  <% @user.restaurants.each do |restaurant| %>
+  <li><%= restaurant.name %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @user.reviews.each do |review| %>
+  <li><%= review.body %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,11 @@
+"Hello, restaurant profile!"
+
+<ul>
+  <li><%= @restaurant.name %></li>
+  <li>Cuisine: <%= @restaurant.cuisine %></li>
+  <li>Location: <%= @restaurant.city %></li>
+  <li>Added by <%= @restaurant.user %></li>
+  <li><%= @restaurant.reviews %> reviews?</li>
+</ul>
+
+<input type="submit" value="Edit <%= @restaurant.name %>">
