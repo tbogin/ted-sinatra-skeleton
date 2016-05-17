@@ -1,4 +1,4 @@
-<form action="/reviews" method="post">
+<form action="/restaurants/<%= @restaurant.id %>/reviews/new" method="post">
   <input name="review[rating]" type="integer" placeholder="Rating" required>
   <input name="review[body]" type="text" placeholder="Write a review">
   <input type="submit" value="Submit Your Review">

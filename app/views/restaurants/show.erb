@@ -5,11 +5,18 @@
   <li>Cuisine: <%= @restaurant.cuisine %></li>
   <li>Location: <%= @restaurant.city %></li>
   <li>Added by <%= @restaurant.user.email %></li>
-  <li><%= @restaurant.reviews %> reviews?</li>
 </ul>
 
-<%= @restaurant.reviews.body %> <!-- associate reviews with restaurants -->
+<ul>
+<% @restaurant.reviews.each do |review| %>
+<li><%= review.body%> -- reviewed by <%= review.user.email %></li>
+<% end %>
+</ul>
 
 <% if logged_in? %>
-<input type="submit" value="Edit <%= @restaurant.name %>">
+<a href="/restaurants/<%= @restaurant.id %>/reviews/new">Review <%= @restaurant.name %></a>
+<% end %>
+<br>
+<% if current_user.id == @restaurant.user.id %>
+<a href="/restaurants/<%= @restaurant.id %>/edit">Edit <%= @restaurant.name %> </a>
 <% end %>
