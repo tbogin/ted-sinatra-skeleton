@@ -1,2 +1,8 @@
 <p>Hello, restaurant edit</p>
 <p>Edit form here</p>
+
+<form method="POST" action="/restaurants/<%= @restaurant.id %>">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="text" name="restaurant[name]" placeholder="Name" value="<%= @restaurant.name %>">
+  <input type="submit" value="Update this Restaurant!">
+</form>

@@ -32,14 +32,15 @@ end
 
 
 get '/restaurants/:id/edit' do
+  @restaurant = Restaurant.find(params[:id])
   erb :'restaurants/edit'
 end
 
-put '/restaurants' do
-  @restaurant = Restaurant.find(params[:restaurant])
+put '/restaurants/:id' do
+  @restaurant = Restaurant.find(params[:id])
   @restaurant.assign_attributes(params[:restaurant])
   if @restaurant.save
-    redirect '/'
+    redirect "/restaurants/#{@restaurant.id}"
   else
     erb :'restaurants/edit'
   end
