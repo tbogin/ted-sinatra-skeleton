@@ -6,7 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :city, null: false
       t.string :state, null: false
       t.integer :zip, null: false
-      t.references :user, null: false
+      t.references :user, null: false, foreign_key: true
       t.timestamps null: false
     end
   end

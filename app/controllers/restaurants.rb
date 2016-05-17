@@ -7,20 +7,29 @@ get '/restaurants/new' do
   erb :'restaurants/new'
 end
 
+post '/restaurants' do
+  @restaurant = Restaurant.new(params[:restaurant])
+      current_user.restaurants << @restaurant
+    if @restaurant.save
+    else
+      erb :'restaurants/new'
+    end
+  redirect '/restaurants'
+  # current_user.restaurants.new(params[:restaurant])
+  # # @restaurant = Restaurant.new(params[:restaurant])
+  # # current_user.restaurants << @restaurant
+  # if current_user.save
+  #   redirect '/'
+  # else
+  #   @errors = @restaurant.errors.full_messages
+  # end
+end
+
 get '/restaurants/:id' do
-  @restaurant = Restaurant.find_by(id: params[:id])
+  @restaurant = Restaurant.find(params[:id])
   erb :'restaurants/show'
 end
 
-post '/restaurants' do
-  @restaurant = Restaurant.new(params[:restaurant])
-  current_user.restaurants << @restaurant
-  if @restaurant.save
-    redirect '/'
-  else
-    @errors = @restaurant.errors.full_messages
-  end
-end
 
 get '/restaurants/:id/edit' do
   erb :'restaurants/edit'
@@ -29,8 +38,6 @@ end
 put '/restaurants' do
   @restaurant = Restaurant.find(params[:restaurant])
   @restaurant.assign_attributes(params[:restaurant])
-
-
   if @restaurant.save
     redirect '/'
   else

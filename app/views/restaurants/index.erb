@@ -5,7 +5,6 @@
 <% @restaurants.each do |restaurant| %>
 
   <li><a href="restaurants/<%= restaurant.id %>"><%= restaurant.name %> </a> - created by <%= restaurant.user.email %>
-    <a href="reviews/new">Review <%= restaurant.name %></a>
   </li>
   <%end%>
 </ul>
