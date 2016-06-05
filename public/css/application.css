@@ -98,3 +98,24 @@ a:hover {
 .restaurant-created-by {
     font-size: 28px;
 }
+
+.restaurant-name, .restaurant-profile {
+    /*text-align: center;*/
+    margin-left: 15%;
+}
+
+.restaurant-profile {
+    list-style-type: none;
+}
+
+.reviews-section {
+    margin-left: 15%;
+}
+
+.latest-reviews {
+    font-size: 28px;
+}
+
+.review-edit-delete {
+    margin-left: 55%;
+}
