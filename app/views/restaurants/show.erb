@@ -16,7 +16,13 @@
 <% if logged_in? %>
 <a href="/restaurants/<%= @restaurant.id %>/reviews/new">Review <%= @restaurant.name %></a>
 <% end %>
-<br>
+
 <% if current_user.id == @restaurant.user.id %>
 <a href="/restaurants/<%= @restaurant.id %>/edit">Edit <%= @restaurant.name %> </a>
+
+<form method="post" action="/restaurants/<%= @restaurant.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input class="button" type="submit" value="Delete this restaurant">
+</form>
+
 <% end %>

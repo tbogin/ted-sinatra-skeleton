@@ -4,35 +4,34 @@ get '/restaurants' do
 end
 
 get '/restaurants/new' do
+  if request.xhr?
+    erb :'restaurants/_new_restaurant_form', layout: false
+  else
   erb :'restaurants/new'
+  end
 end
 
 post '/restaurants' do
-  @restaurant = Restaurant.new(params[:restaurant])
-      current_user.restaurants << @restaurant
+  @restaurant = current_user.restaurants.new(params[:restaurant])
     if @restaurant.save
+      if request.xhr?
+        erb :'restaurants/_single_restaurant', layout: false, locals: {restaurant: @restaurant}
+      else
+        redirect '/restaurants'
+      end
     else
       erb :'restaurants/new'
     end
-  redirect '/restaurants'
-  # current_user.restaurants.new(params[:restaurant])
-  # # @restaurant = Restaurant.new(params[:restaurant])
-  # # current_user.restaurants << @restaurant
-  # if current_user.save
-  #   redirect '/'
-  # else
-  #   @errors = @restaurant.errors.full_messages
-  # end
 end
 
 get '/restaurants/:id' do
-  @restaurant = Restaurant.find(params[:id])
+  @restaurant = Restaurant.find_by(id: params[:id])
   erb :'restaurants/show'
 end
 
 
 get '/restaurants/:id/edit' do
-  @restaurant = Restaurant.find(params[:id])
+  @restaurant = Restaurant.find_by(id: params[:id])
   erb :'restaurants/edit'
 end
 
@@ -44,4 +43,10 @@ put '/restaurants/:id' do
   else
     erb :'restaurants/edit'
   end
+end
+
+delete '/restaurants/:id' do
+  restaurant = Restaurant.find_by(id: params[:id])
+  restaurant.destroy
+  redirect '/'
 end

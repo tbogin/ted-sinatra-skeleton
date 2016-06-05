@@ -1,10 +1,12 @@
-<p>Newly Reviewed Restaurants</p>
+<article class="new-restaurant-form-container"></article>
+
+<h2 class="new-restaurants-headline">Newly Reviewed Restaurants</h2>
 
 
-<ul>
+<ul class="restaurants-list">
 <% @restaurants.each do |restaurant| %>
-
-  <li><a href="restaurants/<%= restaurant.id %>"><%= restaurant.name %> </a> - created by <%= restaurant.user.email %>
-  </li>
+  <%= erb :'restaurants/_single_restaurant', layout: false, locals: {restaurant: restaurant} %>
+  <!-- <li><a href="restaurants/<%= restaurant.id %>"><span class="restaurant-name"><%= restaurant.name %></span> </a> - <span class="restaurant-created-by"><%= restaurant.user.email %></span>
+  </li> -->
   <%end%>
 </ul>

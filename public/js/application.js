@@ -1,7 +1,30 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('.create-restaurant').on('click', function(event){
+    event.preventDefault();
+    $.ajax({
+      url: $(event.target).attr('href')
+    }).done(function(response){
+      $(event.target).hide();
+      $('.new-restaurant-form-container').html(response);
+    });
+  });
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+$('.new-restaurant-form-container').on('submit', '.new-restaurant-form', function(event){
+  event.preventDefault();
+  $.ajax({
+    url: $(event.target).attr('action'),
+    method: $(event.target).attr('method'),
+    data: $(event.target).serialize()
+  }).done(function(response){
+    $('.new-restaurant-form').hide();
+    $('.create-restaurant').show();
+    $('.restaurants-list').prepend(response);
+  });
 });
+
+
+});
+
+
+
+
