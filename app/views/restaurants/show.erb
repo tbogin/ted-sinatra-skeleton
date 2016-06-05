@@ -1,22 +1,29 @@
-"Hello, restaurant profile!"
-
-<ul>
-  <li><%= @restaurant.name %></li>
+<h2 class="restaurant-name"><%= @restaurant.name %></h2>
+<ul class="restaurant-profile">
   <li>Cuisine: <%= @restaurant.cuisine %></li>
   <li>Location: <%= @restaurant.city %></li>
-  <li>Added by <%= @restaurant.user.email %></li>
 </ul>
 
-<ul>
+<section class="reviews-section">
+<h3 class="latest-reviews">Latest Reviews</h3>
+<ul class="reviews-list">
 <% @restaurant.reviews.each do |review| %>
 <li><%= review.body%> -- reviewed by <%= review.user.email %></li>
 <% end %>
 </ul>
+</section>
 
 <% if logged_in? %>
-<a href="/restaurants/<%= @restaurant.id %>/reviews/new">Review <%= @restaurant.name %></a>
+<section class="review-edit-delete">
+<article class="restaurant-review-link"><a href="/restaurants/<%= @restaurant.id %>/reviews/new">Review <%= @restaurant.name %></a></article>
 <% end %>
-<br>
+
 <% if current_user.id == @restaurant.user.id %>
-<a href="/restaurants/<%= @restaurant.id %>/edit">Edit <%= @restaurant.name %> </a>
+<article class="edit-restaurant-link"><a href="/restaurants/<%= @restaurant.id %>/edit">Edit <%= @restaurant.name %> </a></article>
+
+<form method="post" action="/restaurants/<%= @restaurant.id %>">
+  <input type="hidden" name="_method" value="delete">
+  <input class="button" type="submit" value="Delete this restaurant">
+</form>
+</section>
 <% end %>

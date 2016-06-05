@@ -1,5 +1,5 @@
 def current_user
-  User.find(session[:id])
+  User.find_by(id: session[:id])
 end
 
 def logged_in?

@@ -48,7 +48,7 @@ a:hover {
   height: 2em;
 }
 
-code {
+/*code {
     font-family: Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
@@ -64,6 +64,10 @@ code {
     line-height: 1.4em;
     margin-left: -1em;
     overflow: auto;
+}*/
+
+#layout-nav {
+    text-align: center;
 }
 
 #layout-nav li {
@@ -72,4 +76,46 @@ code {
 
 #layout-nav li::after {
     content: " /";
+}
+
+.new-restaurants-headline {
+    text-align: center;
+}
+
+.restaurants-list {
+    text-align: center;
+}
+
+.restaurants-list li {
+    list-style-type: none;
+    line-height: 2.5em;
+}
+
+.restaurant-name {
+    font-size: 44px;
+}
+
+.restaurant-created-by {
+    font-size: 28px;
+}
+
+.restaurant-name, .restaurant-profile {
+    /*text-align: center;*/
+    margin-left: 15%;
+}
+
+.restaurant-profile {
+    list-style-type: none;
+}
+
+.reviews-section {
+    margin-left: 15%;
+}
+
+.latest-reviews {
+    font-size: 28px;
+}
+
+.review-edit-delete {
+    margin-left: 55%;
 }
