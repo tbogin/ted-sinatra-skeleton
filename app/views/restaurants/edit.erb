@@ -4,3 +4,9 @@
 <div class="restaurant-edit-section">
   <%= erb :'/restaurants/_restaurants_edit', layout: false, locals: {restaurant: @restaurant} %>
 </div>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+  <div class="error"><%= error.full_message %></div>
+  <% end %>
+<% end %>

@@ -21,20 +21,6 @@ post '/restaurants/:id/reviews/new' do
 end
 
 
-# post '/reviews' do
 
-#   # @review = Review.new(params[:review])
-#   @restaurant = Restaurant.find(params[:id])
-#   @restaurant.reviews << @review
-#   @user = User.find(params[:id])
-#   @user.reviews << @review
-
-#   if @review.save
-#     redirect '/'
-#   else
-#     @errors = @user.errors.full_messages
-#     erb :'users/new'
-#   end
-# end
 
 

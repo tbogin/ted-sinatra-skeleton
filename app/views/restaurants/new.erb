@@ -1,3 +1,9 @@
 <section id="new-restaurant-section">
-  <%= erb :'restaurants/_new_restaurant_form', layout: false, locals: {restaurant: restaurant} %>
+  <%= erb :'restaurants/_new_restaurant_form', layout: false, locals: {restaurant: @restaurant} %>
 </section>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+  <div class="error"><%= error.full_message %></div>
+  <% end %>
+<% end %>

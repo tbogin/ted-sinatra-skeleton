@@ -7,7 +7,7 @@ get '/restaurants/new' do
   if request.xhr?
     erb :'restaurants/_new_restaurant_form', layout: false
   else
-  erb :'restaurants/new'
+    erb :'restaurants/new'
   end
 end
 
@@ -20,6 +20,7 @@ post '/restaurants' do
         redirect '/restaurants'
       end
     else
+      @errors = @restaurant.errors.full_messages
       erb :'restaurants/new'
     end
 end
@@ -49,6 +50,7 @@ put '/restaurants/:id' do
       redirect "/restaurants/#{@restaurant.id}"
     end
   else
+    @errors = @restaurant.errors.full_messages
     erb :'restaurants/edit'
   end
 end

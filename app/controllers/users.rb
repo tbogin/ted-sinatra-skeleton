@@ -13,6 +13,7 @@ post '/users' do
     redirect '/'
   else
     @errors = @user.errors.full_messages
+    erb :'users/new'
   end
 end
 
@@ -26,8 +27,18 @@ get '/users/:id/edit' do
 end
 
 put '/users/:id' do
+  @user = User.find_by(id: params[:id])
+  @user.assign_attributes(params[:user])
+  if @user.save
+    redirect "/users/#{@user.id}"
+  else
+    @errors = @user.errors.full_messages
+    erb :'users/edit'
+  end
 end
 
 delete '/users/:id' do
-
+  user = User.find_by(id: params[:id])
+  user.destroy
+  redirect '/'
 end

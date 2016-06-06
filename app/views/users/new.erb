@@ -7,3 +7,9 @@
     <input type="submit" value="Sign Up">
   </form>
 </article>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+  <div class="error"><%= error.full_message %></div>
+  <% end %>
+<% end %>
