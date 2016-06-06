@@ -1,4 +1,4 @@
-<h2 class="restaurant-name"><%= @restaurant.name %></h2>
+<%= erb :'restaurants/_restaurant_name', layout: false, locals: {restaurant: @restaurant} %>
 <ul class="restaurant-profile">
   <li>Cuisine: <%= @restaurant.cuisine %></li>
   <li>Location: <%= @restaurant.city %></li>
@@ -19,7 +19,7 @@
 <% end %>
 
 <% if current_user.id == @restaurant.user.id %>
-<article class="edit-restaurant-link"><a href="/restaurants/<%= @restaurant.id %>/edit">Edit <%= @restaurant.name %> </a></article>
+<article class="edit-container"><a class="restaurant-edit-link" href="/restaurants/<%= @restaurant.id %>/edit">Edit <%= @restaurant.name %> </a></article>
 
 <form method="post" action="/restaurants/<%= @restaurant.id %>">
   <input type="hidden" name="_method" value="delete">

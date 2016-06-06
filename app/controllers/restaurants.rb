@@ -32,14 +32,22 @@ end
 
 get '/restaurants/:id/edit' do
   @restaurant = Restaurant.find_by(id: params[:id])
-  erb :'restaurants/edit'
+  if request.xhr?
+    erb :'restaurants/_restaurants_edit', layout: false, locals: {restaurant: @restaurant}
+  else
+    erb :'restaurants/edit'
+  end
 end
 
 put '/restaurants/:id' do
   @restaurant = Restaurant.find(params[:id])
   @restaurant.assign_attributes(params[:restaurant])
   if @restaurant.save
-    redirect "/restaurants/#{@restaurant.id}"
+    if request.xhr?
+      erb :'restaurants/_restaurant_name'
+    else
+      redirect "/restaurants/#{@restaurant.id}"
+    end
   else
     erb :'restaurants/edit'
   end
